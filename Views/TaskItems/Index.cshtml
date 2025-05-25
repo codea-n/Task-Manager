@@ -1,0 +1,32 @@
+@model List<TaskManagerMVC.Models.TaskItem>
+
+<h2 class="mb-4">My Task List</h2>
+
+<!-- Add New Task Button -->
+<a class="btn btn-success mb-3" asp-action="Create">+ Add New Task</a>
+
+<!-- Task Table -->
+<table class="table table-striped table-bordered">
+    <thead class="table-dark">
+        <tr>
+            <th>ID</th>
+            <th>Title</th>
+            <th>Completed</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var task in Model)
+        {
+            <tr>
+                <td>@task.Id</td>
+                <td>@task.Title</td>
+                <td>@(task.IsCompleted ? "✅" : "❌")</td>
+                <td>
+                    <a class="btn btn-sm btn-primary me-2" asp-action="Edit" asp-route-id="@task.Id">Edit</a>
+                    <a class="btn btn-sm btn-danger" asp-action="Delete" asp-route-id="@task.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
