@@ -1,0 +1,26 @@
+@model TaskManagerMVC.Models.TaskItem
+
+<h2>Editing page</h2>
+
+<form asp-action="Edit" method="post">
+    @Html.AntiForgeryToken()
+
+    <input type="hidden" asp-for="Id" />
+
+    <div>
+        <label asp-for="Title"></label>
+        <input asp-for="Title" />
+        <span asp-validation-for="Title"></span>
+    </div>
+
+    <div>
+        <label asp-for="IsCompleted"></label>
+        <input asp-for="IsCompleted" type="checkbox" />
+    </div>
+
+    <button type="submit">Save Changes</button>
+</form>
+
+@section Scripts {
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+}
