@@ -1,0 +1,27 @@
+@model TaskManagerMVC.Models.TaskItem
+
+<h2>Create New Task</h2>
+
+<form asp-action="Create" method="post">
+    <div asp-validation-summary="All" class="alert alert-danger"></div>
+
+    <div class="mb-3">
+        <label asp-for="Title" class="form-label"></label>
+        <input asp-for="Title" class="form-control" />
+        <span asp-validation-for="Title" class="text-danger"></span>
+    </div>
+
+    <div class="form-check mb-3">
+        <input asp-for="IsCompleted" type="checkbox" class="form-check-input" />
+        <label asp-for="IsCompleted" class="form-check-label"></label>
+        <span asp-validation-for="IsCompleted" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary btn-lg">Create</button>
+</form>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
